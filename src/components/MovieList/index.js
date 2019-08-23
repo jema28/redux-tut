@@ -8,8 +8,10 @@ import { MovieGrid } from './index.style'
 
 class MoviesList extends Component {
   componentDidMount() {
-    const { getMovies, isLoaded } = this.props
-    if (!isLoaded) getMovies()
+    const { getMovies, isLoaded, moviesLoadedAt } = this.props
+    const oneHour = 60 * 60 * 1000
+    if (!isLoaded || new Date() - new Date(moviesLoadedAt) > oneHour)
+      getMovies()
   }
 
   render() {
@@ -24,9 +26,12 @@ class MoviesList extends Component {
   }
 }
 
-const mapStateToProps = ({ movies: { movies, moviesLoaded } }) => ({
+const mapStateToProps = ({
+  movies: { movies, moviesLoaded, moviesLoadedAt }
+}) => ({
   movies,
-  isLoaded: moviesLoaded
+  isLoaded: moviesLoaded,
+  moviesLoadedAt
 })
 
 const mapDispatchToProps = dispatch =>
