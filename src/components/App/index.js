@@ -7,12 +7,14 @@ import { composeWithDevTools } from 'redux-devtools-extension'
 import rootReducer from '../../reducers/rootReducer'
 import MoviesList from '../MovieList'
 import MovieDetail from '../MovieDetail'
+import Toggle from '../Toggle'
 
 const store = createStore(rootReducer, {}, composeWithDevTools())
 
 const App = () => (
   <Provider store={store}>
     <Router>
+      <Toggle />
       <Switch>
         <Route exact path="/" component={MoviesList} />
         <Route path="/:id" component={MovieDetail} />
