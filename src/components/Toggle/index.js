@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { toggleMessage } from '../../actions/actions'
 
 const Toggle = ({ messageVisibility, toggleMessage }) => (
   <div>
@@ -15,7 +16,7 @@ const mapStateToProps = ({ message }) => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  toggleMessage: () => dispatch({ type: 'TOGGLE_MESSAGE' })
+  toggleMessage: () => dispatch(toggleMessage())
 })
 
 export default connect(
