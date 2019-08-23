@@ -5,7 +5,7 @@ const initialState = {
 export default function(state = initialState, { type }) {
   switch (type) {
     case 'TOGGLE_MESSAGE':
-      return state
+      return { ...state, messageVisibility: !state.messageVisibility }
     default:
       return state
   }
