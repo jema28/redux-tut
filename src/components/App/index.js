@@ -3,11 +3,12 @@ import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { createStore } from 'redux'
+import { composeWithDevTools } from 'redux-devtools-extension'
 import rootReducer from '../../reducers/rootReducer'
 import MoviesList from '../MovieList'
 import MovieDetail from '../MovieDetail'
 
-const store = createStore(rootReducer)
+const store = createStore(rootReducer, {}, composeWithDevTools())
 
 const App = () => (
   <Provider store={store}>
