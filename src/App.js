@@ -12,8 +12,8 @@ const defaultState = {
 
 const greeting = (state = defaultState, action) => {
   switch (action.type) {
-    case 'GREET_ME':
-      return { ...state, welcome: 'Hello Jem' }
+    case 'GREET_NAME':
+      return { ...state, welcome: `Hello ${action.name}` }
     case 'GREET_WORLD':
       return { ...state, welcome: 'Hello world' }
     default:
@@ -24,7 +24,8 @@ const greeting = (state = defaultState, action) => {
 const store = createStore(greeting)
 
 store.dispatch({
-  type: 'GREET_ME'
+  type: 'GREET_NAME',
+  name: 'Courtney'
 })
 
 console.log(store.getState())
